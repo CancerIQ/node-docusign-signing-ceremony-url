@@ -12,6 +12,13 @@ getSigningCeremonyUrl({
   username: '',
   password: '',
   integratorKey: ''
+  signHereTabs: [{
+    documentId: 1,
+    pageNumber: 1,
+    recipientId: 1,
+    x: 100,
+    y: 100
+  }]
 }).then(
   url => require('child_process').exec(`open ${url}`)
 ).catch(
