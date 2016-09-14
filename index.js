@@ -1,8 +1,8 @@
 const getSigningCeremonyUrl = require('./lib/get-signing-ceremony-url');
 
 getSigningCeremonyUrl({
-  signerName: '',
-  signerEmail: '',
+  signerName: 'Jeremy Kahn',
+  signerEmail: 'jkahn@canceriq.com',
   pdfPath: 'test.pdf',
   createdPdfFileName: 'hamburger.pdf',
   returnUrl: 'https://www.docusign.com/devcenter',
