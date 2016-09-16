@@ -50,4 +50,12 @@ getSigningCeremonyUrl({
 );
 ````
 
-Current this package assumes that the document you want to have signed is already [uploaded to Docusign as a template](https://support.docusign.com/guides/ndse-user-guide-working-with-templates).  Read [this](https://www.docusign.com/DocuSignHelp/Content/template-id.htm) to learn how to find a template's ID.
+Currently this package assumes that the document you want to have signed is already [uploaded to Docusign as a template](https://support.docusign.com/guides/ndse-user-guide-working-with-templates).  Read [this](https://www.docusign.com/DocuSignHelp/Content/template-id.htm) to learn how to find a template's ID.
+
+## Tests
+
+The tests hit Docusign's live API, so they are a bit slow to run.  Before you can run them successfully, you will need to put your account credentials into `docusign-credentials.json`.  Once you've done that, run:
+
+````
+npm test
+````
