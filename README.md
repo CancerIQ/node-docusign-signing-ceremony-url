@@ -44,7 +44,7 @@ getSigningCeremonyUrl({
     }]
   }
 }).then(
-  url => require('child_process').exec(`open ${url}`)
+  response => require('child_process').exec(`open ${response.url}`)
 ).catch(
   console.error
 );
