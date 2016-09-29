@@ -4,7 +4,7 @@ Provide configuration data, get an embeddable Docusign signing ceremony URL.
 
 Docusign provides an [official Node frontend for its API](https://github.com/docusign/docusign-node-client), but for simple tasks, it can be a little... convoluted.  This package is a wrapper over Docusign's API that focuses on exactly one thing: Generating a URL for a "signing ceremony."  A "signing ceremony," in Docusign's parlance, is a UX wherein a user can sign and submit a document.
 
-This package exports a function called `getSigningCeremonyUrl`, which returns a promise that resolves to a signing ceremony URL:
+This package exports a function called `getSigningCeremonyUrl`, which returns a promise that resolves to an object that contains a signing ceremony URL:
 
 ````javascript
 const getSigningCeremonyUrl = require('get-signing-ceremony-url');
