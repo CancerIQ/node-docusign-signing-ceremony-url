@@ -7,8 +7,10 @@ const { expect } = chai;
 chai.use(require('chai-string'));
 
 describe('getSigningCeremonyUrl', function () {
-  it('retrieves a docusign url', () =>
-    getSigningCeremonyUrl(
+  it('retrieves a docusign url', function () {
+    this.timeout(4000);
+
+    return getSigningCeremonyUrl(
       Object.assign({
         signerName: 'Some Person',
         signerEmail: 'noreply@lolnope.com',
@@ -26,10 +28,10 @@ describe('getSigningCeremonyUrl', function () {
         }
       },
       docusignCredentials)
-    ).then(url =>
-      expect(url).to.be.a('string')
-      .and
-      .startWith('https://')
-    )
-  );
+    ).then(response =>
+      expect(response.url).to.be.a('string')
+        .and
+        .startWith('https://')
+    );
+  });
 });
