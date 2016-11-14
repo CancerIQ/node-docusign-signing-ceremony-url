@@ -1,12 +1,15 @@
 # node-docusign-signing-ceremony-url
 
-Provide configuration data, get an embeddable Docusign signing ceremony URL.
+Provide configuration data, get an embeddable Docusign signing ceremony URL.  Also allows for the retrieval of pdf.
 
 Docusign provides an [official Node frontend for its API](https://github.com/docusign/docusign-node-client), but for simple tasks, it can be a little... convoluted.  This package is a wrapper over Docusign's API that focuses on exactly one thing: Generating a URL for a "signing ceremony."  A "signing ceremony," in Docusign's parlance, is a UX wherein a user can sign and submit a document.
 
+## Getting the Signing Ceremony URL
+
 This package exports a function called `getSigningCeremonyUrl`, which returns a promise that resolves to an object that contains a signing ceremony URL:
 
-````javascript
+
+``` javascript
 const getSigningCeremonyUrl = require('get-signing-ceremony-url');
 
 getSigningCeremonyUrl({
@@ -48,9 +51,27 @@ getSigningCeremonyUrl({
 ).catch(
   console.error
 );
-````
+
+```
 
 Currently this package assumes that the document you want to have signed is already [uploaded to Docusign as a template](https://support.docusign.com/guides/ndse-user-guide-working-with-templates).  Read [this](https://www.docusign.com/DocuSignHelp/Content/template-id.htm) to learn how to find a template's ID.
+
+## Retrieving documents from an envelope
+
+``` javascript
+const getEnvelopeDocuments = require('get-envelope-documents');
+
+getEnvelopeDocuments({
+  username: 'your-username',
+  password: 'your-password',
+  integratorKey: 'your-integrator-key',
+  docusignEnvironment: 'your-docusign-env--eg--demo',
+  envelopeID: 'envelope-that-contain-desired-docs'
+}).then(response => {
+  // Do something with response.body 
+})
+```
+
 
 ## Tests
 
