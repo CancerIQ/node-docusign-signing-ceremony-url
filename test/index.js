@@ -1,6 +1,7 @@
 const { describe, it, before, beforeEach } = require('mocha');
 const chai = require('chai');
 const getSigningCeremonyUrl = require('../lib/get-signing-ceremony-url');
+const getEnvelopeDocuments = require('../lib/get-envelope-documents');
 const docusignCredentials = require('../docusign-credentials.json');
 
 const { expect } = chai;
@@ -33,5 +34,24 @@ describe('getSigningCeremonyUrl', function () {
         .and
         .startWith('https://')
     );
+  });
+});
+
+
+describe('getEnvelopeDocuments', function () {
+  it('retrieves a docusign envelopes documents', function () {
+    this.timeout(4000);
+    let cred = docusignCredentials;
+    return getEnvelopeDocuments(
+      Object.assign({
+        username: cred.username,
+        password: cred.password,
+        integratorKey: cred.integratorKey,
+        docusignEnvironment: cred.docusignEnvironment,
+        envelopeId: cred.envelopeId
+      })
+    ).then(response => {
+      expect(response.type).to.equal('application/pdf');
+    });
   });
 });
