@@ -56,6 +56,15 @@ getSigningCeremonyUrl({
 
 Currently this package assumes that the document you want to have signed is already [uploaded to Docusign as a template](https://support.docusign.com/guides/ndse-user-guide-working-with-templates).  Read [this](https://www.docusign.com/DocuSignHelp/Content/template-id.htm) to learn how to find a template's ID.
 
+### Envelope information
+
+The method also provides the created Envelope's ID in two forms:
+
+1. In the response's `envelope_id` field.
+2. Appended to the `returnUrl`:
+
+`https://my.return.url.com/` -> `https://my.return.url.com/?envelope_id=THE_ENVELOPE_ID`
+
 ## Retrieving documents from an envelope
 
 ``` javascript
