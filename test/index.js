@@ -39,7 +39,7 @@ describe('getSigningCeremonyUrl', function () {
 
 
 describe('getEnvelopeDocuments', function () {
-  it('retrieves a docusign envelopes documents', function () {
+  it('retrieves a base64 encoded pdf', function () {
     this.timeout(4000);
     let cred = docusignCredentials;
     return getEnvelopeDocuments(
@@ -52,6 +52,7 @@ describe('getEnvelopeDocuments', function () {
       })
     ).then(response => {
       expect(response.type).to.equal('application/pdf');
+      expect(response.header['content-transfer-encoding']).to.equal('base64');
     });
   });
 });
